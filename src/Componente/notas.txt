@@ -1,0 +1,337 @@
+              <Entity
+                class="clickable"
+                primitive="a-octahedron"
+                detail={2}
+                radius={2}
+                position={this}
+                
+                lowpoly={{
+                    color: '#D92B6A',
+                    nodes: true,
+                    opacity: 0.15,
+                    wireframe: true
+                  }}
+                /*
+                lowpoly={{
+                  //  color: COLORS[this.state.colorIndex]
+                }}
+                */
+                events={{
+                    click: _handleClick
+                  }}
+                  
+                animation__oscillate={{
+                    property: 'position',
+                    dur: 2000,
+                    dir: 'alternate',
+                    easing: 'linear',
+                    loop: true,
+                    from: this,
+                    to: {
+                      x: 0,
+                      y: 0 + 0.2,
+                      z: 0
+                    }
+                  }}
+                  
+                  animation__rotate={{
+                    property: 'rotation',
+                    dur: 60000,
+                    easing: 'linear',
+                    loop: true,
+                    to: { x: 0, y: 360, z: 0 }
+                  }}
+                />
+
+
+                    {
+                        datos.map((dato, index) => (
+                            
+                            <tr >
+                                <td>Habilidades</td>
+                                <td>{dato.correo}</td>
+                                <td>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolor quibusdam voluptate beatae 
+                                    iste saepe et doloribus tenetur cupiditate dicta facere nulla nostrum nemo nobis, recusandae necessitatibus,
+                                    eveniet temporibus incidunt.
+                                </td>
+                            </tr>
+                        ))
+                    }
+
+
+                                <a-asset-item id="tree-mtl" src="obj/arbol/materials.mtl"></a-asset-item>
+                            //gltf-model={mimodelo}
+              //gltf-model="gl/DamagedHelmet.glb"
+              //gltf-model="gl/1688287533029.gltf"
+              //fbx-model="src: url(gl/rumba/Rumba_Dancing.fbx)"
+              //animation-mixer={{'clip': 'walk'}}
+              //animation__mixer = {{'clip': 'Attack', 'loop': 'repeat', 'repetitions': 'indefinite'}}
+
+
+// MOVIMIENTO
+              /*
+              animation__oscillate={{
+                  property: 'position',
+                  dur: 2000,
+                  dir: 'alternate',
+                  easing: 'linear',
+                  loop: true,
+                  from: this,
+                  to: {
+                    x: this,
+                    y: 0 + 0.02,
+                    z: this
+                  }
+                }}
+                */
+// ON click
+              events={{
+                click: _handleClick,
+                change: _cambio
+              }}
+
+ <Scene
+            light="defaultLightsEnabled: false"
+            renderer="colorManagement: true;"
+            //renderer="logarithmicDepthBuffer: true"
+            effects="bloom, film, fxaa"
+            bloom="radius: 0.99"
+            film="sIntensity: 0.15; nIntensity: 0.15"
+            
+        >
+          <Entity primitive="a-camera"  position={{ x: 0.0, y: 1.6, z: 5.0} } wasd-controls="fly:true" >
+            <Entity
+              primitive="a-cursor"
+              cursor={{ fuse: false }}
+              material={{ color: 'white', shader: 'flat', opacity: 0.75 }}
+              geometry={{ radiusInner: 0.005, radiusOuter: 0.007 }}
+              event-set__1={{
+                _event: 'mouseenter',
+                scale: { x: 1.4, y: 1.4, z: 1.4 }
+              }}
+              event-set__2={{
+                _event: 'mouseleave',
+                scale: { x: 1, y: 1, z: 1 }
+              }}
+              raycaster="objects: .clickable"
+            />
+          </Entity>
+
+          {isLoading ? <LoadingSpinner /> : renderDatos}
+          <a-assets>
+            <a-asset-item id="tree-obj" src={require('./obj/arbol/model.obj')}></a-asset-item>
+            <a-asset-item id="tree-mtl" src={require('./obj/arbol/materials.mtl')}></a-asset-item>
+          </a-assets>
+          <a-assets>
+            <a-asset-item id="big-obj" src={require('./obj/big/model.obj')}></a-asset-item>
+            <a-asset-item id="big-mtl" src={require('./obj/big/materials.mtl')}></a-asset-item>
+          </a-assets>
+          <a-assets>
+            <a-asset-item id="cesped-obj" src={require('./obj/cesped/model.obj')}></a-asset-item>
+            <a-asset-item id="cesped-mtl" src={require('./obj/cesped/materials.mtl')}></a-asset-item>
+          </a-assets>
+
+
+            <img id="suelo-obj" src={suelo} alt="imagensuelo" />
+            <img id="sky" src={imgSky} alt="sky"/>,
+
+          <Entity className="floor" static-body
+                geometry="primitive: box; width: 25; height: 25; depth:0.5"
+                position="0 -0.25 0"
+                rotation="-90 0 0"
+                material={`shader: flat; src: #suelo-obj; repeat: 15 10`}/>
+        <Entity
+          obj-model="obj: #tree-obj; mtl: #tree-mtl"
+          class="clickable"
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="1 1.2 0.20"
+          shadow
+          crossorigin="anonymous"
+          events={{
+            click: _handleClick("algo"),
+            change: _cambio
+          }}
+        />
+        <Entity
+          obj-model="obj: #cesped-obj; mtl: #cesped-mtl"
+          class="clickable"
+
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="1 0 0.20"
+          shadow
+          crossorigin="anonymous"
+
+        />
+        <Entity
+          obj-model="obj: #big-obj; mtl: #big-mtl"
+          class="clickable"
+
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="-1.5 1.2 0.50"
+          shadow
+          crossorigin="anonymous"
+        />
+              
+
+          <Entity
+            primitive="a-light"
+            type="directional"
+            color="#FFF"
+            intensity={7.5}
+            position={{ x: 2.5, y: 0.0, z: 10.0 }}
+          />
+
+        </Scene>
+
+
+// para lo que tengo ahora
+<a-entity layout="type: line; margin: 1" position="0 0 -3">
+      
+      <Entity
+          primitive="a-entity"
+          position={{ x: 0.0, y: 1.6, z: 0.0} }
+          geometry="primitive: plane; height: 0.55; width: 1.9"
+          material="shader: flat; color: white"
+          text={"value: Bienvenid@, soy " + datos.nombre + ", i estas registrado la experiencia será más significativa  ; color: black"}
+          animation__oscillate={{
+            property: 'position',
+            dur: 2000,
+            dir: 'alternate',
+            easing: 'linear',
+            loop: true,
+            from: this,
+            to: {
+              x: this,
+              y: 1.6 + 0.02,
+              z: this
+            }
+          }}    
+      />
+    </a-entity>
+
+    <a-scene physics="driver: ammo; debug: true; gravity: -9.8; debugDrawMode: 1"
+            light="defaultLightsEnabled: false"
+            renderer="colorManagement: true;"
+            //renderer="logarithmicDepthBuffer: true"
+            effects="bloom, film, fxaa"
+            bloom="radius: 0.99"
+            film="sIntensity: 0.15; nIntensity: 0.15"
+            
+        >
+        <Entity primitive="a-camera" kinematic-body="enableJumps: true;">
+          <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
+        </Entity>
+          
+
+
+
+          {isLoading ? <LoadingSpinner /> : renderDatos}
+          <a-assets>
+            <a-asset-item id="tree-obj" src={require('./obj/arbol/model.obj')}></a-asset-item>
+            <a-asset-item id="tree-mtl" src={require('./obj/arbol/materials.mtl')}></a-asset-item>
+          </a-assets>
+          <a-assets>
+            <a-asset-item id="big-obj" src={require('./obj/big/model.obj')}></a-asset-item>
+            <a-asset-item id="big-mtl" src={require('./obj/big/materials.mtl')}></a-asset-item>
+          </a-assets>
+          <a-assets>
+            <a-asset-item id="cesped-obj" src={require('./obj/cesped/model.obj')}></a-asset-item>
+            <a-asset-item id="cesped-mtl" src={require('./obj/cesped/materials.mtl')}></a-asset-item>
+            <a-asset-item id="mesa-obj" src={require('./bit/desk.obj')}></a-asset-item>
+            <a-asset-item id="mesa-mtl" src={require('./bit/desk.mtl')}></a-asset-item>
+          </a-assets>
+          <a-assets>
+            <a-asset-item id="prueba-obj" src={require('./bit/wall.obj')}></a-asset-item>
+            <a-asset-item id="prueba-mtl" src={require('./bit/wall.mtl')}></a-asset-item>
+            <a-asset-item id="letras-obj" src={require('./obj/letras/model.obj')}></a-asset-item>
+            <a-asset-item id="letras-mtl" src={require('./obj/letras/materials.mtl')}></a-asset-item>
+          </a-assets>
+
+
+            <img id="suelo-obj" src={suelo} alt="imagensuelo" />
+            <img id="sky" src={imgSky} alt="sky"/>
+
+          <Entity className="floor" static-body
+                geometry="primitive: box; width: 125; height: 125; depth:0.5"
+                position="90 -0.25 0"
+
+                //obj-model="obj: #prueba-obj; mtl: #prueba-mtl"
+ 
+                material={`shader: flat; src:#suelo-obj;  repeat: 15 10`}
+                />
+        <Entity static-body
+          obj-model="obj: #letras-obj; mtl: #letras-mtl"
+          class="clickable"
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="0 0.99 -1.5"
+          //shadow
+          
+          events={{
+            click: ()=>_handleClick('letras') ,
+            change: _cambio
+          }}
+        />
+        <Entity static-body
+          obj-model="obj: #prueba-obj; mtl: #prueba-mtl"
+          class="clickable"
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="-90 0.99 -1.5"
+          //shadow
+          crossorigin="anonymous"
+          events={{
+            click: ()=>_handleClick('mio') ,
+            change: _cambio
+          }}
+        />
+        <Entity 
+          obj-model="obj: #mesa-obj; mtl: #mesa-mtl"
+          class="clickable"
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="0 0 0.20"
+          //shadow
+          static-body
+          events={{
+            click: ()=>_handleClick('mesa') ,
+            change: _cambio
+          }}
+        />
+        <Entity static-body
+          obj-model="obj: #cesped-obj; mtl: #cesped-mtl"
+          class="clickable"
+
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="1 0 0.20"
+          //shadow
+          crossorigin="anonymous"
+
+        />
+        <Entity
+          static-body="shape: box"
+          obj-model="obj: #big-obj; mtl: #big-mtl"
+          class="clickable"
+
+          //light="intensity:5;type:hemisphere"
+          //intensity={5.5}
+          position="-1.5 1.2 0.50"
+          //shadow
+        />
+        <a-entity physics="debug: true" id="floor" static-body geometry="depth:100;height:0.2;width:100;" material="repeat:50 20;color:#fafafa;metalness:0.2;roughness:0.1;src:https://ucarecdn.com/8a2780f7-e076-4f8c-bd1d-40ae172508a9/"></a-entity>
+
+
+          <Entity
+            primitive="a-light"
+            type="directional"
+            color="#FFF"
+            intensity={7.5}
+            position={{ x: 4.5, y: 0.0, z: 10.0 }}
+          />
+
+        </a-scene>

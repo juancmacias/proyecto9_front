@@ -1,0 +1,40 @@
+{
+    "asset": {
+        "generator": "gltf-sample-viewer",
+        "version": "2.0"
+    },
+    "cameras": [
+        {
+            "type": "perspective",
+            "perspective": {
+                "aspectRatio": 1.7272727272727273,
+                "yfov": 0.7853981633974483,
+                "zfar": 40.18154812571018,
+                "znear": 0.004018154812571018
+            }
+        }
+    ],
+    "nodes": [
+        {
+            "camera": 0,
+            "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                4.1815409660339355,
+                1
+            ]
+        }
+    ]
+}
